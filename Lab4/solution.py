@@ -55,4 +55,9 @@ while ok:
     if not ok:
         a-=0.1
 print(a)
+
+#Subpct3:
+com=stats.expon.rvs(scale=a, size=10000)
+total=ord+com
+print(np.mean(total))
 # Create the plot
