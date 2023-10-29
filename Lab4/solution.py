@@ -25,13 +25,34 @@ plt.show()
 
 #Pregatire_comanda
 
-a=5
-com=stats.expon.rvs(a, size=10000)
+a=4
+com=stats.expon.rvs(scale=a, size=10000)
 
 print(com)
 
 az.plot_posterior(com)
 plt.show()
 
+#Subpct2:
 
+total=ord+com
+
+print(total)
+az.plot_posterior(total)
+plt.show()
+
+#Luat din BMH:
+print(np.mean(total<15))
+
+a=3
+ok=True
+while ok:
+    a+=0.1
+    com=stats.expon.rvs(scale=a, size=10000)
+    total=ord+com
+    if np.mean(total<15)<0.95:
+        ok=False
+    if not ok:
+        a-=0.1
+print(a)
 # Create the plot
