@@ -10,7 +10,7 @@ import arviz as az
 
 #data=[0,5,10]
 
-for i in [0.2,0.5]:
+for i in [0.2,0.5,0.8]:
     for j in [0,5,10]:
         with pm.Model() as our_first_model:
         # a priori
