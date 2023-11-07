@@ -52,7 +52,6 @@ model = pm.Model()
 with model:
     prior4to7 = pm.Uniform('prior4to7', 700, 20)
     int4to7_obs = pm.Poisson('obs4to7', mu=prior4to7, observed=cars4to7)
-    print(prior4to7)
     int7to8 = pm.Poisson(y2)
     int8to16 = pm.Poisson(y3)
     int16to19 = pm.Poisson(y4)

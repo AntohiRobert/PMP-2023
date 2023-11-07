@@ -1,0 +1,3 @@
+In limbaj tehnic: Y este direct proportional cu n, theta e invers proportional cu n
+
+In limbaj natural: Cu cat numarul de clienti care a cumparat e mai mare, cu atat numarul probabil de clienti care a intrat in magazin e mai mare. Iar cu cat probabilitatea unui client de a cumpara ceva e mai mare, cu atat e mai mic numarul probabil de clienti care a intrat in magazin(la acelasi nr de clienti care cumpara). De ex: daca au cumparat 20 de clienti, si stim ca 20% din clienti au cumparat, inseamna ca au intrat aprox 100 de clienti. Daca 50% din clienti au cumparat, inseamna ca in magazin au intrat doar 40 de clienti
