@@ -2,6 +2,8 @@ import arviz as az
 import pandas as pd
 from matplotlib import pyplot
 import pymc as pm
+import statistics
+import numpy as np
 #import tensorflow as tf
 
 #returns = pd.read_csv(
@@ -55,7 +57,14 @@ print(idata.posterior)
 az.plot_trace(idata, figsize=(10, 7))
 pyplot.show()
 
-best_regression_line = idata.posterior["Intercept"] +idata.posterior["slope"]*cp
+intercept_mean = np.mean(idata.posterior["Intercept"]).item()
+
+slope_mean = np.mean(idata.posterior["slope"]).item()
+
+print(intercept_mean)
+print(slope_mean)
+
+best_regression_line = intercept_mean +slope_mean*cp
 #Cu cat cp e mai mare, cu atat mpg e mai mare. cp si mpg sunt invers corelate
 
 print(mpg)
