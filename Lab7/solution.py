@@ -39,19 +39,24 @@ with pm.Model() as model:  # model specifications in PyMC are wrapped in a with-
     #print(type(intercept))
     #print(type(slope))
     #print(type(cp_tensor))
-    muIn = intercept+slope*cp
+    #muIn = intercept+slope*cp
 
     # Define likelihood
-    likelihood = pm.Normal("y", mu=muIn, sigma=sigma, observed=mpg)
+    likelihood = pm.Normal("y", mu=intercept+slope*cp, sigma=sigma, observed=mpg)
 
     # Inference!
     # draw 3000 posterior samples using NUTS sampling
     idata = pm.sample(3000)
 
-idata.posterior["y_model"] = idata.posterior["intercept"] + idata.posterior["slope"] * idata.DataArray(cp)
+#best_regression_line = idata.intercep
+
+print(idata.posterior)
 
 az.plot_trace(idata, figsize=(10, 7))
 pyplot.show()
+
+best_regression_line = idata.posterior["Intercept"] +idata.posterior["slope"]*cp
+#Cu cat cp e mai mare, cu atat mpg e mai mare. cp si mpg sunt invers corelate
 
 print(mpg)
 
