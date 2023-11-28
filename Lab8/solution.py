@@ -72,7 +72,7 @@ print(post_predictive.observed_data)
 
 post_predictive_hdi = pm.hdi(post_predictive.observed_data['y'], hdi_prob=0.9)
 
-print("Pret vanzare: ", post_predictive_hdi)
+print(post_predictive_hdi)
 
 '''
 
