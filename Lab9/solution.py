@@ -14,10 +14,10 @@ with pm.Model() as model:
     b2 = pm.Normal('b2', mu=0, sigma=20)
     
     #sigmoid
-    mu = pm.math.invlogit(b0 + b1 * data['GRE'] + b2 * data['GPA'])
+    pi = pm.math.invlogit(b0 + b1 * data['GRE'] + b2 * data['GPA'])
 
     #Distributie
-    y = pm.Normal('y', mu=mu, sigma=20, observed=data['Admission'])
+    y = pm.Bernoulli('y', p=pi, observed=data['Admission'])
     
     #a posteriori
     trace = pm.sample(2000,target_accept=.95)
