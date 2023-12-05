@@ -61,10 +61,40 @@ plt.show()
 
 student_GRE = 550
 student_GPA = 3.5
-student_probability = 1 / (1 + np.exp(-(b0_posterior_avg + b1_posterior_avg * student_GRE + b2_posterior_avg * student_GPA)))
+x = -(b0_posterior_avg + b1_posterior_avg * student_GRE + b2_posterior_avg * student_GPA)
+x = np.clip(x, -750, 500)  # Limit the range of x to prevent overflow
+student_probability = 1 / (1 + np.exp(x))
+#student_probability =  1 / (1 + np.exp(-(b0_posterior_avg + b1_posterior_avg * student_GRE + b2_posterior_avg * student_GPA)))
+#student_probability = pm.math.invlogit(b0 + b1 * student_GRE + b2 * student_GPA)
 
-prob_samples = 1 / (1 + np.exp(-(b0_posterior + b1_posterior * student_GRE + b2_posterior  * student_GPA)))
+x = -(b0_posterior + b1_posterior * student_GRE + b2_posterior * student_GPA)
+x = np.clip(x, -750, 500)  # Limit the range of x to prevent overflow
+prob_samples = 1 / (1 + np.exp(x))
+#prob_samples = 1 / (1 + np.exp(-(b0_posterior + b1_posterior * student_GRE + b2_posterior  * student_GPA)))
+#prob_samples = pm.math.invlogit(b0_posterior + b1_posterior * student_GRE + b2_posterior * student_GPA)
 hdi_student_probability = pm.stats.hdi(prob_samples, hdi_prob=0.9)
 
+print("Admission probability:")
 print(student_probability)
+print("Hdi admission probability:")
+print(hdi_student_probability)
+
+student_GRE = 500
+student_GPA = 3.2
+x = -(b0_posterior_avg + b1_posterior_avg * student_GRE + b2_posterior_avg * student_GPA)
+x = np.clip(x, -750, 500)  # Limit the range of x to prevent overflow
+student_probability = 1 / (1 + np.exp(x))
+#student_probability =  1 / (1 + np.exp(-(b0_posterior_avg + b1_posterior_avg * student_GRE + b2_posterior_avg * student_GPA)))
+#student_probability = pm.math.invlogit(b0 + b1 * student_GRE + b2 * student_GPA)
+
+x = -(b0_posterior + b1_posterior * student_GRE + b2_posterior * student_GPA)
+x = np.clip(x, -750, 500)  # Limit the range of x to prevent overflow
+prob_samples = 1 / (1 + np.exp(x))
+#prob_samples = 1 / (1 + np.exp(-(b0_posterior + b1_posterior * student_GRE + b2_posterior  * student_GPA)))
+#prob_samples = pm.math.invlogit(b0_posterior + b1_posterior * student_GRE + b2_posterior * student_GPA)
+hdi_student_probability = pm.stats.hdi(prob_samples, hdi_prob=0.9)
+
+print("Admission probability second case:")
+print(student_probability)
+print("Hdi admission probability second case:")
 print(hdi_student_probability)
