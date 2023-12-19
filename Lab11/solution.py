@@ -18,11 +18,9 @@ for cluster in clusters:
     with pm.Model() as model:
         p = pm.Dirichlet('p', a=np.ones(cluster))
         means = pm.Normal('means',
-            mu=np.linspace(cs_exp.min(), cs_exp.max(), cluster),
-            sigma=10, shape=cluster,
-            transform=pm.distributions.transforms.ordered)
+            mu=5, sigma=10, shape=cluster)
         sd = pm.HalfNormal('sd', sigma=10)
-        y = pm.NormalMixture('y', w=p, mu=means, sigma=sd, observed=cs_exp)
+        y = pm.NormalMixture('y', w=p, mu=means, sigma=sd, observed=mix)
         idata = pm.sample(1000, tune=2000, target_accept=0.9, random_seed=123, return_inferencedata=True)
         idatas.append(idata)
         models.append(model)
