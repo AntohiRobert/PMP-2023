@@ -2,7 +2,6 @@ import numpy as np
 import scipy.stats as stats
 import matplotlib.pyplot as plt
 
-#Subpct 1
 
 def posterior_grid(grid_points=50, heads=6, tails=9):
     """
