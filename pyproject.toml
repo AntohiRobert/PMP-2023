@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pmp-2023"
+version = "0.1.0"
+description = ""
+authors = ["Antohi Robert <antohir@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11.6,<3.12"
+matplotlib = "^3.8.2"
+scipy = "^1.11.4"
+numpy = "^1.26.3"
+arviz = "^0.17.0"
+pymc = "^5.10.3"
+pgmpy = "^0.1.24"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
