@@ -66,7 +66,7 @@ print(coef_pclass_abs_mean)
 0.01219706873408851
 0.38653965202504015
 Observam ca valorile la coef_age sunt mult mai mici decat la coef_pclass, deci probabil
-age influenteaza mai mult probabilitatea de supravietuire
+pclass influenteaza mai mult probabilitatea de supravietuire
 '''
 # Subpct d
 val_pasager= alpha_samples+coef_age*age_pasager+coef_pclass*pclass_pasager
