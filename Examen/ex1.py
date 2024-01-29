@@ -82,7 +82,6 @@ prob_suprav=[]
 for val in val_pasager:
     v=sigmoid(val)
     prob_suprav.append(v)
-#probabilitate_suprav=pm.math.sigmoid(val_pasager)
 
 print(prob_suprav)
 
