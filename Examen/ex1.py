@@ -75,8 +75,6 @@ probabilitate_suprav=pm.math.sigmoid(val_pasager)
 
 print(probabilitate_suprav)
 
-medie_prob_supravietuire_nou = np.mean(probabilitate_suprav)
-hdi_prob_supravietuire_nou = az.hdi(probabilitate_suprav, hdi_prob=0.9)
+medie_probabilitate_suprav = np.mean(probabilitate_suprav)
+hdi_probabilitate_suprav = az.hdi(probabilitate_suprav, hdi_prob=0.9)
 
-print(f"Probabilitatea medie de supraviețuire: {medie_prob_supravietuire_nou}")
-print(f"Intervalul de 90% HDI pentru probabilitatea de supraviețuire: {hdi_prob_supravietuire_nou}")
