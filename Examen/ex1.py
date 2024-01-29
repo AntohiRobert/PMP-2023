@@ -83,8 +83,10 @@ for val in val_pasager:
     v=sigmoid(val)
     prob_suprav.append(v)
 
-print(prob_suprav)
+#print(prob_suprav)
 
 medie_probabilitate_suprav = np.mean(prob_suprav)
 hdi_probabilitate_suprav = az.hdi(prob_suprav, hdi_prob=0.9)
 
+print(medie_probabilitate_suprav)
+print(hdi_probabilitate_suprav)
