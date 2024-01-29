@@ -1,8 +1,9 @@
 import pandas as pd
 import pymc as pm
 import arviz as az
-import matplotlib.pyplot as plt
 import numpy as np
+import math
+
 
 
 #Supbct a
@@ -69,12 +70,22 @@ Observam ca valorile la coef_age sunt mult mai mici decat la coef_pclass, deci p
 pclass influenteaza mai mult probabilitatea de supravietuire
 '''
 # Subpct d
+def sigmoid(x):
+  return 1 / (1 + math.exp(-x))
+
 val_pasager= alpha_samples+coef_age*age_pasager+coef_pclass*pclass_pasager
 
-probabilitate_suprav=pm.math.sigmoid(val_pasager)
+print(val_pasager)
 
-print(probabilitate_suprav)
+prob_suprav=[]
 
-medie_probabilitate_suprav = np.mean(probabilitate_suprav)
-hdi_probabilitate_suprav = az.hdi(probabilitate_suprav, hdi_prob=0.9)
+for val in val_pasager:
+    v=sigmoid(val)
+    prob_suprav.append(v)
+#probabilitate_suprav=pm.math.sigmoid(val_pasager)
+
+print(prob_suprav)
+
+medie_probabilitate_suprav = np.mean(prob_suprav)
+hdi_probabilitate_suprav = az.hdi(prob_suprav, hdi_prob=0.9)
 
