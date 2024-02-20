@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 from pgmpy.models import BayesianNetwork
 from pgmpy.factors.discrete import TabularCPD
 from pgmpy.inference import VariableElimination
-from pgmpy.models import BayesianModel
-from pgmpy.factors.discrete import TabularCPD
 
 '''
 robertantohi@Roberts-MacBook-Pro Marire % poetry run python sol1.py 
